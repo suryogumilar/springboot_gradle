@@ -15,6 +15,13 @@ pastikan database running karena ada task test, lihat di pakcage test folder `sr
 
 `gradle build -x test`
 
+##### via eclipse IDE
+
+menggunakan buildship eclipse plugin untuk gradle
+
+ - buka window -> show view-> other -> Gradle -> pilih Gradle Tasks dan Gradle Executions
+ - pada view Gradle Taks akan terlihat task yg bisa dijalankan
+ - pilih dan run task yg diinginkan
 
 ### some notes and trouble shoot
 

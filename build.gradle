@@ -6,8 +6,12 @@ plugins {
 }
 
 group = 'com.sg.microservice'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
+version = '0.0.1-SNAPSHOT'
+
+war {
+	archiveName "spbootgradle.war"
+}
 
 repositories {
 	mavenCentral()
