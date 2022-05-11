@@ -2,6 +2,20 @@
 
 masih memakai application.properties
 
+
+### how to build
+
+#### gradle
+
+menggunakan gradle versi 7.4.2, masuk ke dir dan jalankan:   
+
+`gradle build`   
+
+pastikan database running karena ada task test, lihat di pakcage test folder `src/test/java`. Untuk skip test jalankan dengan argumen `-x test`:
+
+`gradle build -x test`
+
+
 ### some notes and trouble shoot
 
 
