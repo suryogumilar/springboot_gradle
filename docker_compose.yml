@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.7.3-focal
+    env_file:
+      - ./mariadb.env
+    volumes:
+      - ./mariadbdisk:/var/lib/mysql
+    ports:
+      - 33060:33060
+      - 3306:3306
+  tomcat:
+    container_name: tomcat
+    image: tomcat:9.0.56-jre17-temurin-focal
+    env_file:
+      - ./tomcat.env
+    ports:
+      - 8080:8080
+    depends_on:
+      - mariadb
+    volumes:
+      - ./webapps:/usr/local/tomcat/webapps
+  php-myadmin:
+    container_name: php-myadmin
+    image: phpmyadmin:5.1.3-apache
+    ports:
+      - 9181:80
+    environment:
+      - PMA_HOST=mariadb
+      - PMA_PORT=3306

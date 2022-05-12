@@ -38,3 +38,9 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+### envi
+
+mariadb.env
+tomcat.env
