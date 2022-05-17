@@ -28,6 +28,12 @@ pastikan database running karena ada task test, lihat di pakcage test folder `sr
 
 `gradle build -x test`
 
+###### note untuk gradle wrapper:  
+
+pada [spring intitializer](https://start.spring.io/) versi gradle yang digunakan thus gradlew nya adalah versi 7.4.1, kita upgrade gradle yang digunakan menggunakan latest version per tanggal project ini dibuat (10 Mei 2022) yaitu versi 7.4.2 (release date Mar 31, 2022, sementara 7.4.1 release date Mar 09, 2022. Lihat di laman [release](https://gradle.org/releases/) )
+
+
+
 ##### via eclipse IDE (versi : 2022-3)
 
 menggunakan buildship eclipse plugin untuk gradle
