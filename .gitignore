@@ -44,3 +44,5 @@ out/
 
 mariadb.env
 tomcat.env
+mongo-express.env
+mongodb.env

@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:4.4.14-focal
+    env_file:
+      - ./mongodb.env
+    volumes:
+      - ./mongodbdisk:/data/db
+    ports:
+      - 27017:27017
+  mongo-express:
+    container_name: mongoexpress
+    image: mongo-express:1.0.0-alpha.4
+    env_file:
+      - ./mongo-express.env
+    ports:
+      - 7000:8081
+    depends_on:
+      - mongodb

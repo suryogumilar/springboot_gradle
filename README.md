@@ -91,3 +91,37 @@ DB_URL=jdbc:mysql://mariadb:3306/mariadbdev?useSSL=false
 DB_USER=mariauser
 DB_PASSWORD=password
 ```
+
+## menggunakan mongodb (docker version)
+
+untuk run menggunakan docker compose ada dua file env:
+
+### mongodb envi file
+
+contohnya adalah sbb
+
+```bash
+MONGO_INITDB_ROOT_USERNAME=root
+MONGO_INITDB_ROOT_PASSWORD=password
+MONGO_INITDB_DATABASE=mongodbdev
+```
+
+untuk express mongo sebagai gui untuk adminnya menggunakan envi :
+
+#### mongo-express envi file
+
+contohnya dalah sbb
+
+```bash
+## konfigurasi untuk mongo expressnya, untuk autentikasi
+
+ME_CONFIG_BASICAUTH_USERNAME=mongoexpressuser
+ME_CONFIG_BASICAUTH_PASSWORD=password
+
+## konifugrasi untuk koneksi ke mongodbnya
+
+ME_CONFIG_MONGODB_SERVER=mongodb
+ME_CONFIG_MONGODB_AUTH_USERNAME=root
+ME_CONFIG_MONGODB_AUTH_PASSWORD=password
+ME_CONFIG_MONGODB_AUTH_DATABASE=mongodbdev
+```
