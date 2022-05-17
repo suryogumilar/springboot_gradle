@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.8'
 
 services:
   mongodb:
@@ -19,3 +19,7 @@ services:
       - 7000:8081
     depends_on:
       - mongodb
+
+networks:
+  default:
+    name: mongodb_network
