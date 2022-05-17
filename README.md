@@ -118,6 +118,9 @@ contohnya dalah sbb
 ME_CONFIG_BASICAUTH_USERNAME=mongoexpressuser
 ME_CONFIG_BASICAUTH_PASSWORD=password
 
+## theme
+ME_CONFIG_OPTIONS_EDITORTHEME=dracula
+
 ## konifugrasi untuk koneksi ke mongodbnya
 
 ME_CONFIG_MONGODB_SERVER=mongodb
