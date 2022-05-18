@@ -19,6 +19,18 @@ services:
       - 7000:8081
     depends_on:
       - mongodb
+  tomcat:
+    container_name: tomcat4mongo
+    image: tomcat:9.0.56-jre17-temurin-focal
+    env_file:
+      - ./tomcat4mongo.env
+    ports:
+      - 8080:8080
+    depends_on:
+      - mongodb
+    volumes:
+      - ./webapps/spbootgradle.war:/usr/local/tomcat/webapps/spbootgradlemongo.war
+
 
 networks:
   default:

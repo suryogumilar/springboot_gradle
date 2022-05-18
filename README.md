@@ -55,7 +55,7 @@ insert pada separate lines dari Program Arguments
 
 ##### pemisahan scan base package, entity dan repository
 
-jika lokasi jpa repository berbeda path atau pakcagenya dengan Configuration class dan spring boot runner maka harus dipisah menggunakan anotasi sbb:   
+jika lokasi jpa repository berbeda path atau pakcagenya dengan Configuration class dan spring boot runner (@SpringBootApplication class) maka harus dipisah menggunakan anotasi sbb:   
 
 ```java
 @EnableJpaRepositories("my.package.repository.base.*")
@@ -103,7 +103,10 @@ contohnya adalah sbb
 ```bash
 MONGO_INITDB_ROOT_USERNAME=root
 MONGO_INITDB_ROOT_PASSWORD=password
-MONGO_INITDB_DATABASE=mongodbdev
+
+# file .js juga harus dibuat dengan nama yg sama dengan variabel ini di folder `docker-entrypoint-initdb.d`
+# jika file js tidak diberikan atau tidak dipetakan melalui `volume` maka database ytg dibuat defaultnya adalah `test`
+#MONGO_INITDB_DATABASE=mongodbdev
 ```
 
 untuk express mongo sebagai gui untuk adminnya menggunakan envi :
