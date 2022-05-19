@@ -136,3 +136,86 @@ ME_CONFIG_MONGODB_SERVER=mongodb
 # ME_CONFIG_MONGODB_AUTH_PASSWORD=password
 # ME_CONFIG_MONGODB_AUTH_DATABASE=mongodbdev
 ```
+
+### tomcat for mongodb envi file
+
+contohnya adalah sbb:
+
+```
+MONGODB_URI=mongodb://root:password@mongodbserver:27017/mongodbdev?authSource=admin
+```
+
+### build gradle dengan file `gradle.build` dengan nama yg berbeda
+
+jika kita menggunakan file untuk build gradle dengan nama yang berbeda dengan nama default `gradle.build`, misal nama file untuk buildnya adalah `build4mongo.gradle`, maka gunakan perintah:
+
+`gradle --build-file=build4mongo.gradle`
+
+tapi Eclipse tidak bisa disetting menggunakan build.gradle yang berbeda
+
+
+## akses url service
+contoh akses : 
+ - GET method:
+    - http://appserver:8080/spbootgradle/users4mongo/allusers
+    - http://appserver:8080/spbootgradle/users4mongo/getbyid/0 
+ - DELETE method:
+    - http://appserver:8080/spbootgradle/users4mongo/delete?id=0
+ - POST method:
+    - http://appserver:8080/spbootgradle/users4mongo/addOrUpdate
+ 
+## mongo db Factory dan template class
+ 
+[referensi](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#data.nosql.mongodb)
+
+tidak perlu dua class dibawah ditambahkan ke aplikasi juga tidak apa-apa dan bisa mengurangi sedikit size package kecuali ingin melakukan kustomisasi
+
+#### Mongo factory bean
+ 
+To access MongoDB databases, you can inject an auto-configured org.springframework.data.mongodb.MongoDatabaseFactory. By default, the instance tries to connect to a MongoDB server at mongodb://localhost/test.  
+
+```java
+package com.sg.microservice.springbootgradle;
+
+import org.springframework.data.mongodb.MongoDatabaseFactory;
+import org.springframework.stereotype.Component;
+ 
+@Component
+public class MyMongoFactoryBean {
+	private final MongoDatabaseFactory mongo;
+	public MyMongoFactoryBean(MongoDatabaseFactory mongo) {
+        this.mongo = mongo;
+        System.out.println(mongo);
+    }
+	public MongoDatabaseFactory getMongo() {
+		return mongo;
+	}
+}
+```
+
+#### Mongo template bean
+
+Spring Data MongoDB provides a MongoTemplate class that is very similar in its design to Spring’s JdbcTemplate. As with JdbcTemplate, Spring Boot auto-configures a bean for you to inject the template,
+
+```java
+package com.sg.microservice.springbootgradle;
+
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class MyMongoTemplateBean {
+	private final MongoTemplate mongoTemplate;
+	
+	public MyMongoTemplateBean(MongoTemplate mongoTemplate) {
+		this.mongoTemplate = mongoTemplate;
+        System.out.println(mongoTemplate);
+	}
+
+	public MongoTemplate getMongoTemplate() {
+		return mongoTemplate;
+	}
+}
+
+```

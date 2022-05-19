@@ -1,28 +1,32 @@
 package com.sg.microservice.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
+//import javax.persistence.*;
 
-
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * The persistent class for the User database table.
  * 
  */
-@Entity
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-@Table(name="User")
+//@Entity
+//@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+//@Table(name="User")
+
+//jika tanpa ini maka disimpan di collection user (not capitalized)
+@Document(collection = "User") 
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="user_id")
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@Column(name="user_id")
 	private int userId;
-	@Column(name="age")
+	//@Column(name="age")
 	private int age;
-	@Column(name="name")
+	//@Column(name="name")
 	private String name;
-	@Column(name="salary")
+	//@Column(name="salary")
 	private float salary;
 
 	public User() {

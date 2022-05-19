@@ -3,13 +3,13 @@ package com.sg.microservice.springbootgradle;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+//import com.zaxxer.hikari.HikariConfig;
+//import com.zaxxer.hikari.HikariDataSource;
 
-@Configuration
+//@Configuration
 public class RootConfig {
 	@Value("${DB_DRIVER}")
 	private String dbDriver;
@@ -20,19 +20,20 @@ public class RootConfig {
 	@Value("${DB_PASSWORD}")
 	private String dbPassword;
 	
-	@Bean
+	//@Bean
 	public DataSource datasource() {
-		HikariConfig hikariConfig = new HikariConfig();
+		//HikariConfig hikariConfig = new HikariConfig();
 		//hikariConfig.setDriverClassName("org.mariadb.jdbc.Driver");
-		hikariConfig.setDriverClassName(dbDriver);
+		//hikariConfig.setDriverClassName(dbDriver);
 		//hikariConfig.setJdbcUrl("jdbc:mysql://192.168.48.128:3306/mariadbdev?useSSL=false");
-		hikariConfig.setJdbcUrl(databaseUrl);
+		//hikariConfig.setJdbcUrl(databaseUrl);
 		//hikariConfig.setUsername("mariauser");
-		hikariConfig.setUsername(dbUser);
+		//hikariConfig.setUsername(dbUser);
 		//hikariConfig.setPassword("password");
-		hikariConfig.setPassword(dbPassword);
-		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
-		return dataSource;
+		//hikariConfig.setPassword(dbPassword);
+		//HikariDataSource dataSource = new HikariDataSource(hikariConfig);
+		//return dataSource;
+		return null;
 	}
 
 }

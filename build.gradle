@@ -16,43 +16,28 @@ bedakan dengan task bootWar yang akan buat war dengan nama:
  - springboot-gradle-0.0.1-SNAPSHOT.war
 */
 war {
-	archiveName "spbootgradle.war"
+	archiveName "spbootgradle4mongo.war"
 }
+
+
+bootWar {
+    baseName = 'spbootgradle'
+    archiveName 'spbootgradle4mongo.war'
+}
+
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
-}
-
-// contoh custom tasks
-/*
-contoh untuk bikin cutom fat jar dengan dependencies. 
-tapi ga bisa dipakai untuk spring boot
-untuk spring boot gunakan task `bootJar`
-*/
-task customFatJar(type: Jar){
-	group 'custom tasks'
-	description = 'making fat jar using custom tasks'
-	duplicatesStrategy =  DuplicatesStrategy.EXCLUDE
-	manifest {
-		attributes 'Main-Class': 'com.sg.microservice.springbootgradle.SpringbootGradleApplication'
-	}
-	baseName = 'spbootgradlejar'
-	from {
-		configurations.runtimeClasspath.collect { 
-			it.isDirectory() ? it : zipTree(it) 
-		}
-	}
-	with jar
 }
