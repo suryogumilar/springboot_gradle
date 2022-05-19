@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sg.microservice.entity.User;
+import com.sg.microservice.exception.EntityNotFoundException;
 import com.sg.microservice.repository.UserMongoRepository;
 import com.sg.microservice.service.UserMongoService;
 
@@ -20,8 +21,8 @@ public class UserMongoServiceImpl implements UserMongoService{
 	}
 
 	@Override
-	public User getUserById(Integer id) {
-		return userMongoRepository.findById(String.valueOf(id)).orElse(null);
+	public User getUserById(String id) {
+		return userMongoRepository.findById(id).orElse(null);
 	}
 
 	@Override
@@ -30,14 +31,13 @@ public class UserMongoServiceImpl implements UserMongoService{
 	}
 
 	@Override
-	public User deleteUser(Integer id) throws Exception {
+	public User deleteUser(String id) throws Exception {
 		User tobeDeleted = null;
-		String strId = String.valueOf(id);
-		tobeDeleted = userMongoRepository.findById(strId).orElse(null);
+		tobeDeleted = userMongoRepository.findById(id).orElse(null);
 		if(tobeDeleted != null) {
-			userMongoRepository.deleteById(strId);
+			userMongoRepository.deleteById(id);
 		}else {
-			throw new Exception("user not available");
+			throw new EntityNotFoundException("user not available");
 		}
 		return tobeDeleted;
 	}

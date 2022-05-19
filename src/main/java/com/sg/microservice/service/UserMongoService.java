@@ -6,7 +6,7 @@ import com.sg.microservice.entity.User;
 
 public interface UserMongoService {
 	public List<User> getAllUsers();
-	public User getUserById(Integer id);
+	public User getUserById(String id);
 	public User addOrUpdateUser(User user);
-	public User deleteUser(Integer id) throws Exception;
+	public User deleteUser(String id) throws Exception;
 }

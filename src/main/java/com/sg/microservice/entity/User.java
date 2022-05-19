@@ -21,7 +21,7 @@ public class User implements Serializable {
 	@Id
 	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	//@Column(name="user_id")
-	private int userId;
+	private String userId;
 	//@Column(name="age")
 	private int age;
 	//@Column(name="name")
@@ -32,11 +32,11 @@ public class User implements Serializable {
 	public User() {
 	}
 
-	public int getUserId() {
+	public String getUserId() {
 		return this.userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

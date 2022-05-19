@@ -30,7 +30,7 @@ public class UserMongoController {
 	}
 	
 	@GetMapping("/getbyid/{id}")
-	public ResponseEntity<User>getUserById(@PathVariable("id") int userId){
+	public ResponseEntity<User>getUserById(@PathVariable("id") String userId){
 		
 		User userById = userMongoService.getUserById(userId);
 		return new ResponseEntity<User>(userById, HttpStatus.OK);
@@ -43,7 +43,7 @@ public class UserMongoController {
 		return new ResponseEntity<User>(userById, HttpStatus.OK);
 	}
 	@DeleteMapping("/delete")
-	public ResponseEntity<User>deleteUser(@RequestParam("id") int id) throws Exception{
+	public ResponseEntity<User>deleteUser(@RequestParam("id") String id) throws Exception{
 		
 		User userById = userMongoService.deleteUser(id);
 		return new ResponseEntity<User>(userById, HttpStatus.OK);
