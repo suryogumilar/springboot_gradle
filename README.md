@@ -219,3 +219,6 @@ public class MyMongoTemplateBean {
 }
 
 ```
+### using @indexed annotation
+
+jika sudah ada data dan kita ubah constructionnya dengan @indexed maka error duplicate key
